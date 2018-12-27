@@ -1,0 +1,147 @@
+;;     ____           _          ______                         
+;;    /  _/___ _____ ( )_____   / ____/___ ___  ____ ___________
+;;    / // __ `/ __ \|// ___/  / __/ / __ `__ \/ __ `/ ___/ ___/
+;;  _/ // /_/ / / / / (__  )  / /___/ / / / / / /_/ / /__(__  ) 
+;; /___/\__,_/_/ /_/ /____/  /_____/_/ /_/ /_/\__,_/\___/____/  
+;;          _      _ _         _ 
+;;         (_)_ _ (_) |_   ___| |
+;;         | | ' \| |  _|_/ -_) |
+;;         |_|_||_|_|\__(_)___|_|
+;;
+;;  (use `figlet 'text' -f smslant` to create headings
+
+;; set up packages
+(require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+(setq use-package-always-ensure t)
+
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  (require 'use-package))
+
+(use-package evil
+  :config
+  (evil-mode 1))
+
+;; (use-package helm
+;;   :bind (("M-x" . helm-M-x)
+;; 	 ("C-x C-f" . helm-find-files)
+;; 	 ("C-x f" . helm-recentf) ; overrides set-fill-column
+;; 	 ("C-x b" . helm-buffers-list))
+;;   :config
+;;   (helm-mode 1))
+;; USE IVY INSTEAD
+(use-package ivy
+  :config
+  (ivy-mode))
+
+(use-package counsel
+  :config (counsel-mode)
+  :bind ("C-x f" . 'counsel-recentf))
+
+(use-package projectile
+  :config (projectile-mode 1))
+  ;; TODO finish setting up projectile)
+
+;; use swiper
+(global-set-key (kbd "C-s") 'swiper)
+
+;; replace `list-buffers` with the more advanced `ibuffer`
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+;;    ____              __  _             
+;;   / __/_ _____  ____/ /_(_)__  ___  ___
+;;  / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
+;; /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
+
+(defun insert-journal-date ()
+  (interactive)
+  (insert (shell-command-to-string "date")))
+
+;; (defun highlight-todos
+;;     (font-lock-add-keywords nil
+;; 			    '(("\\<\\(FIXME\\|TODO\\|BUG\\):"
+;;              1 font-lock-warning-face t))))
+
+;; (defun hilite-todos ()
+;;   (highlight-lines-matching-regexp "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"
+;;        'hi-green-b) )
+
+(defun journal-mode ()
+  ;; sets specific settings in the buffer used for writing journal
+  ;; entries
+  ;;
+  ;; TODO learn how to actually write major and minor modes (and how
+  ;; to get them to automatically trigger)
+  (interactive)
+  (flyspell-mode)
+  (set-fill-column 70)
+  (auto-fill-mode))
+
+;; PROGRAMMING
+;; General:
+(which-function-mode)
+
+(add-hook 'prog-mode-hook 'show-paren-mode)
+
+;; simplify lambda, etc in all supported modes
+(setq prettify-symbols-unprettify-at-point 1)
+(global-prettify-symbols-mode 1)
+
+;;                       __   _          __
+;;   ___ ________ ____  / /  (_)______ _/ /
+;;  / _ `/ __/ _ `/ _ \/ _ \/ / __/ _ `/ / 
+;;  \_, /_/  \_,_/ .__/_//_/_/\__/\_,_/_/  
+;; /___/        /_/                        
+;;                __             _          __  _         
+;;  ______ _____ / /____  __ _  (_)__ ___ _/ /_(_)__  ___ 
+;; / __/ // (_-</ __/ _ \/  ' \/ /_ // _ `/ __/ / _ \/ _ \
+;; \__/\_,_/___/\__/\___/_/_/_/_//__/\_,_/\__/_/\___/_//_/
+
+;; (use-package dimmer
+;;   :config
+;;   (dimmer-mode))
+
+;; Color Theme:
+(setq nord-comment-brightness 20)
+(setq nord-region-highlight "frost")
+(load-theme 'nord t)
+
+;; Toggles:
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+(blink-cursor-mode -1)
+
+;; Modeline:
+;; TODO enter this
+
+;; Org mode:
+(use-package org-bullets
+  :config (setq org-bullets-bullet-list
+		 '("◉"
+		   "○"
+		   "●"
+		   "◆"))
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 108 :width normal)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
