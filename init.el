@@ -51,6 +51,8 @@
 ;; replace `list-buffers` with the more advanced `ibuffer`
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(global-set-key (kbd "C-c f") 'follow-delete-other-windows-and-split)
+
 (use-package which-key
   :config
   (which-key-mode))
@@ -89,6 +91,14 @@
 (which-function-mode)
 
 (add-hook 'prog-mode-hook 'show-paren-mode)
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 ;; simplify lambda, etc in all supported modes
 (setq prettify-symbols-unprettify-at-point 1)
@@ -142,6 +152,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(custom-safe-themes
+   (quote
+    ("d88c43fe03ac912e35963695caf0ae54bc6ce6365c3a42da434ef639f7a37399" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" default)))
  '(package-selected-packages
    (quote
-    (olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
+    (poet-theme doom-themes eglot markdown-mode olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
