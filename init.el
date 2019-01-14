@@ -86,6 +86,13 @@
   (set-fill-column 70)
   (auto-fill-mode))
 
+(defun writing-mode ()
+  ;; some defaults good for writing
+  ;;
+  ;; TODO currently this just copies journal-mode
+  (interactive)
+  (journal-mode))
+
 ;; PROGRAMMING
 ;; General:
 (which-function-mode)
@@ -140,6 +147,12 @@
 		   "◆"))
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 
+;; Version control
+
+(use-package magit
+  :bind ("C-x g" . 'magit-status))
+
+(use-package evil-magit)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -159,4 +172,4 @@
     ("d88c43fe03ac912e35963695caf0ae54bc6ce6365c3a42da434ef639f7a37399" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" default)))
  '(package-selected-packages
    (quote
-    (poet-theme doom-themes eglot markdown-mode olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
+    (magit adaptive-wrap poet-theme doom-themes eglot markdown-mode olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
