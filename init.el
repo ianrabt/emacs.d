@@ -150,7 +150,7 @@
 ;; Version control
 
 (use-package magit
-  :bind ("C-x g" . 'magit-status))
+  :bind ("C-c g" . 'magit-status))
 
 (use-package evil-magit)
 
