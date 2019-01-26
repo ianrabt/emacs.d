@@ -1,3 +1,5 @@
+;; journal configuration
+;; =====================
 (defun journal-mode ()
   ;; sets specific settings in the buffer used for writing journal
   ;; entries

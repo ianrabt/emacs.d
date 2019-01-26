@@ -1,4 +1,5 @@
-;; general configurations for all writing
+;; general writing configuration
+;; =============================
 (defun writing-mode ()
   ;; some good defaults for writing
   ;;
@@ -8,6 +9,7 @@
 
 
 ;; markdown configuration
+;; ======================
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -18,6 +20,7 @@
 
 
 ;; org mode configuration
+;; ======================
 (use-package org-bullets
   :config (setq org-bullets-bullet-list
 		 '("◉"
@@ -35,6 +38,7 @@
 (use-package evil-org)
 
 ;; TODO latex configuration
+;; ========================
 (use-package auctex
   :defer t
   :ensure t)

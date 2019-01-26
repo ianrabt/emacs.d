@@ -1,12 +1,17 @@
-;; general configurations for all programming languages
+;; general programming configurations
+;; ==================================
 (use-package projectile
   :config (projectile-mode 1))
 
-(which-function-mode)
+;; list all files in project (TODO as defined by projectile?)
+(global-set-key (kbd "C-c p") 'project-find-file)
 
-(add-hook 'prog-mode-hook 'show-paren-mode)
+(which-function-mode 1) ;; display information about function at point
 
-;; Version control
+(add-hook 'prog-mode-hook 'show-paren-mode) ;; match parens
+
+;; version control
+;; ===============
 (use-package magit
   :bind ("C-c g" . 'magit-status))
 

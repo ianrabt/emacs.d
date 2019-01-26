@@ -1,3 +1,7 @@
+;; general global functionality changes:
+;;   this file is a bit of a grab-bag
+;; =====================================
+
 ;; start up evil automatically
 (use-package evil
   :config
