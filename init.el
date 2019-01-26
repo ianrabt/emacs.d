@@ -21,142 +21,14 @@
 (eval-when-compile
   (require 'use-package))
 
-;; start up evil automatically
-(use-package evil
-  :config
-  (evil-mode 1))
+(add-to-list 'load-path (expand-file-name "lisp"
+					  user-emacs-directory))
 
-;; ivy config
-(use-package ivy
-  :config
-  (ivy-mode))
-
-(use-package counsel
-  :config (counsel-mode)
-  :bind ("C-x f" . 'counsel-recentf))
-
-;; use swiper
-(global-set-key (kbd "C-s") 'swiper)
-
-(load "general-programming")
-
-;; replace `list-buffers` with the more advanced `ibuffer`
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-(global-set-key (kbd "C-c f") 'follow-delete-other-windows-and-split)
-
-(use-package which-key
-  :config
-  (which-key-mode))
-
-;;    ____              __  _             
-;;   / __/_ _____  ____/ /_(_)__  ___  ___
-;;  / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
-;; /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
-
-(defun insert-journal-date ()
-  (interactive)
-  (insert (shell-command-to-string "date")))
-
-;; (defun highlight-todos
-;;     (font-lock-add-keywords nil
-;; 			    '(("\\<\\(FIXME\\|TODO\\|BUG\\):"
-;;              1 font-lock-warning-face t))))
-
-;; (defun hilite-todos ()
-;;   (highlight-lines-matching-regexp "\\<\\(FIXME\\|WRITEME\\|WRITEME!\\|TODO\\|BUG\\):?"
-;;        'hi-green-b) )
-
-(defun journal-mode ()
-  ;; sets specific settings in the buffer used for writing journal
-  ;; entries
-  ;;
-  ;; TODO learn how to actually write major and minor modes (and how
-  ;; to get them to automatically trigger)
-  (interactive)
-  (flyspell-mode)
-  (set-fill-column 70)
-  (auto-fill-mode))
-
-(defun writing-mode ()
-  ;; some defaults good for writing
-  ;;
-  ;; TODO currently this just copies journal-mode
-  (interactive)
-  (journal-mode))
-
-;; PROGRAMMING
-;; General:
-(which-function-mode)
-
-(add-hook 'prog-mode-hook 'show-paren-mode)
-
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
-;; simplify lambda, etc in all supported modes
-(setq prettify-symbols-unprettify-at-point 1)
-(global-prettify-symbols-mode 1)
-
-;;                       __   _          __
-;;   ___ ________ ____  / /  (_)______ _/ /
-;;  / _ `/ __/ _ `/ _ \/ _ \/ / __/ _ `/ / 
-;;  \_, /_/  \_,_/ .__/_//_/_/\__/\_,_/_/  
-;; /___/        /_/                        
-;;                __             _          __  _         
-;;  ______ _____ / /____  __ _  (_)__ ___ _/ /_(_)__  ___ 
-;; / __/ // (_-</ __/ _ \/  ' \/ /_ // _ `/ __/ / _ \/ _ \
-;; \__/\_,_/___/\__/\___/_/_/_/_//__/\_,_/\__/_/\___/_//_/
-
-;; (use-package dimmer
-;;   :config
-;;   (dimmer-mode))
-
-;; Color Theme:
-(setq nord-comment-brightness 20)
-(setq nord-region-highlight "frost")
-(load-theme 'nord t)
-
-;; Toggles:
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
-(blink-cursor-mode -1)
-
-;; Modeline:
-;; TODO enter this
-
-;; Org mode:
-(use-package org-bullets
-  :config (setq org-bullets-bullet-list
-		 '("◉"
-		   "○"
-		   "●"
-		   "◆"))
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
-
-;; org keybindings
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c b") 'org-switchb)
-
-(use-package evil-org)
-
-(use-package auctex
-  :defer t
-  :ensure t)
-
-;; Version control
-
-(use-package magit
-  :bind ("C-c g" . 'magit-status))
-
-(use-package evil-magit)
+(load "general.el") ;; global functionality changes
+(load "graphical") ;; graphical customization
+(load "programming")
+(load "prose")
+(load "journal")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
