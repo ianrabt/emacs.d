@@ -155,6 +155,10 @@
 
 (use-package evil-org)
 
+(use-package auctex
+  :defer t
+  :ensure t)
+
 ;; Version control
 
 (use-package magit
@@ -177,7 +181,8 @@
    [default default default italic underline success warning error])
  '(custom-safe-themes
    (quote
-    ("d88c43fe03ac912e35963695caf0ae54bc6ce6365c3a42da434ef639f7a37399" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" default)))
+    ("fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "d88c43fe03ac912e35963695caf0ae54bc6ce6365c3a42da434ef639f7a37399" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "bf390ecb203806cbe351b966a88fc3036f3ff68cd2547db6ee3676e87327b311" default)))
+ '(org-agenda-files (quote ("~/itaylor@g.hmc.edu/Personal/personal.org")))
  '(package-selected-packages
    (quote
-    (evil-org magit adaptive-wrap poet-theme doom-themes eglot markdown-mode olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
+    (auctex evil-org magit adaptive-wrap poet-theme doom-themes eglot markdown-mode olivetti which-key use-package projectile org-bullets nord-theme memoize helm evil dimmer counsel))))
