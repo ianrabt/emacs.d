@@ -21,18 +21,12 @@
 (eval-when-compile
   (require 'use-package))
 
+;; start up evil automatically
 (use-package evil
   :config
   (evil-mode 1))
 
-;; (use-package helm
-;;   :bind (("M-x" . helm-M-x)
-;; 	 ("C-x C-f" . helm-find-files)
-;; 	 ("C-x f" . helm-recentf) ; overrides set-fill-column
-;; 	 ("C-x b" . helm-buffers-list))
-;;   :config
-;;   (helm-mode 1))
-;; USE IVY INSTEAD
+;; ivy config
 (use-package ivy
   :config
   (ivy-mode))
@@ -41,12 +35,10 @@
   :config (counsel-mode)
   :bind ("C-x f" . 'counsel-recentf))
 
-(use-package projectile
-  :config (projectile-mode 1))
-  ;; TODO finish setting up projectile)
-
 ;; use swiper
 (global-set-key (kbd "C-s") 'swiper)
+
+(load "general-programming")
 
 ;; replace `list-buffers` with the more advanced `ibuffer`
 (global-set-key (kbd "C-x C-b") 'ibuffer)
