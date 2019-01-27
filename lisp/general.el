@@ -31,3 +31,12 @@
 ;; simplify lambda, etc in all supported modes
 (setq prettify-symbols-unprettify-at-point 1)
 (global-prettify-symbols-mode 1)
+
+;; allow "un-filling" paragraphs (i.e. undo `fill-paragraph'
+(defun unfill-paragraph ()
+  "Undo the effects of `fill-paragraph'."
+  (interactive)
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil)))
+
+(global-set-key (kbd "M-Q") 'unfill-paragraph)
