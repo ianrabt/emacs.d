@@ -1,5 +1,7 @@
 ;; general writing configuration
 ;; =============================
+(setq adaptive-wrap-extra-indent 0)
+
 (defun writing-mode ()
   ;; some good defaults for writing
   ;;
@@ -7,6 +9,13 @@
   (interactive)
   (flyspell-mode))
 
+(defun writing-mode-olivetti ()
+  (interactive)
+  (writing-mode)
+  (olivetti-mode)
+  (adaptive-wrap-prefix-mode))
+
+(global-set-key (kbd "C-c o") 'writing-mode-olivetti)
 
 ;; markdown configuration
 ;; ======================
