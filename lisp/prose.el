@@ -51,3 +51,10 @@
 (use-package auctex
   :defer t
   :ensure t)
+
+;; PDFs
+;; ====
+
+(use-package pdf-tools
+  :ensure t
+  :config (pdf-tools-install))
