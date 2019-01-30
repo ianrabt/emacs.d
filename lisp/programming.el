@@ -19,3 +19,8 @@
 
 ;; TODO highlight todo's
 ;; TODO autocompletion
+
+;; rust
+;; ====
+
+(use-package rust-mode)
