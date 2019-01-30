@@ -20,8 +20,13 @@
 (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>")
   'evil-previous-visual-line)
 
-; Make horizontal movement cross lines                                    
+;; Make horizontal movement cross lines                                    
 (setq-default evil-cross-lines t)
+
+;; evil escape
+(use-package evil-escape
+  :init (setq-default evil-escape-key-sequence "jk")
+  :config (evil-escape-mode 1))
 
 ;; misc.
 ;; =====
