@@ -5,17 +5,20 @@
 (defun writing-mode ()
   ;; some good defaults for writing
   ;;
-  ;;TODO get this to automatically trigger -- hooks?
+  ;; TODO get this to automatically trigger -- hooks?
   (interactive)
   (flyspell-mode))
 
 (defun writing-mode-olivetti ()
+  ;; TODO make this an actual mode
   (interactive)
   (writing-mode)
   (olivetti-mode)
   (adaptive-wrap-prefix-mode))
 
 (global-set-key (kbd "C-c o") 'writing-mode-olivetti)
+
+;; TODO add serif proportional font support
 
 ;; markdown configuration
 ;; ======================
