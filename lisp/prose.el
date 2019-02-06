@@ -14,6 +14,7 @@
   (interactive)
   (writing-mode)
   (olivetti-mode)
+  (whitespace-newline-mode) ;; newlines can be ambiguous in olivetti
   (adaptive-wrap-prefix-mode))
 
 (global-set-key (kbd "C-c o") 'writing-mode-olivetti)
