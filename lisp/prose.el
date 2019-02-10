@@ -54,6 +54,9 @@
 ;; ========================
 (use-package auctex
   :defer t
+  :init
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
   :ensure t)
 
 ;; PDFs
