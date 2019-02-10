@@ -15,7 +15,7 @@
 (add-to-list 'load-path (expand-file-name "lisp"
 					  user-emacs-directory))
 
-(load "general.el") ;; global functionality changes
+(load "general") ;; global functionality changes
 (load "graphical") ;; graphical customization
 (load "programming")
 (load "prose")
