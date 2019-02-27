@@ -23,4 +23,10 @@
 ;; rust
 ;; ====
 
+;; emacs lisp
+;; ==========
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (push '(?` . ("`" . "'"))
+					evil-surround-pairs-alist)))
+
 (use-package rust-mode)
