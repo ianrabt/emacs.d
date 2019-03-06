@@ -28,6 +28,12 @@
   :init (setq-default evil-escape-key-sequence "jk")
   :config (evil-escape-mode 1))
 
+;; evil surround
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 ;; misc.
 ;; =====
 
