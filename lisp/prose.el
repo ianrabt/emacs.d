@@ -1,6 +1,7 @@
 ;; general writing configuration
 ;; =============================
 (setq adaptive-wrap-extra-indent 0)
+(set-face-attribute 'variable-pitch nil :family "DejaVu Serif Condensed")
 
 (defun writing-mode ()
   ;; some good defaults for writing
