@@ -17,6 +17,16 @@
 
 (use-package evil-magit)
 
+(use-package lsp-mode
+  :commands lsp)
+  ;; :init
+  ;; (setq ...))
+
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+;; TODO set up flymake
+;; TODO set up company
+
 ;; TODO highlight todo's
 ;; TODO autocompletion
 
