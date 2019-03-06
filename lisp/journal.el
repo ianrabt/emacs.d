@@ -7,6 +7,6 @@
   ;; TODO learn how to actually write major and minor modes (and how
   ;; to get them to automatically trigger)
   (interactive)
-  (writing-mode)
+  (writing-defaults)
   (set-fill-column 70)
   (auto-fill-mode))

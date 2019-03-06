@@ -3,12 +3,12 @@
 (setq adaptive-wrap-extra-indent 0)
 (set-face-attribute 'variable-pitch nil :family "DejaVu Serif Condensed")
 
-(defun writing-mode ()
+(defun writing-defaults ()
   ;; some good defaults for writing
-  ;;
-  ;; TODO get this to automatically trigger -- hooks?
   (interactive)
   (flyspell-mode))
+
+(add-hook 'text-mode-hook 'writing-defaults)
 
 (defun writing-mode-olivetti ()
   ;; TODO make this an actual mode
@@ -37,10 +37,10 @@
 ;; ======================
 (use-package org-bullets
   :config (setq org-bullets-bullet-list
-		 '("◉"
-		   "○"
-		   "●"
-		   "◆"))
+		'("◉"
+		  "○"
+		  "●"
+		  "◆"))
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 
 ;; org keybindings
@@ -59,6 +59,10 @@
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
   :ensure t)
+
+(add-hook 'TeX-mode-hook (lambda ()
+			   (set-fill-column 80)
+			   (auto-fill-mode)))
 
 ;; PDFs
 ;; ====
