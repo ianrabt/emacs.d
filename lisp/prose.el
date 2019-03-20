@@ -13,7 +13,8 @@
 (defun writing-mode-olivetti ()
   ;; TODO make this an actual mode
   (interactive)
-  (writing-mode)
+  (writing-defaults)
+  (auto-fill-mode -1)
   (olivetti-mode)
   ;; (whitespace-newline-mode) ;; newlines can be ambiguous in olivetti
   (adaptive-wrap-prefix-mode))
