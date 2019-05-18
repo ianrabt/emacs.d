@@ -7,6 +7,14 @@
 (setq nord-region-highlight "frost")
 (load-theme 'nord t)
 
+(defun load-nord-theme (frame)
+  (select-frame frame)
+  (load-theme 'nord t))
+
+(if (daemonp)
+	(add-hook 'after-make-frame-functions #'load-nord-theme)
+  (load-theme 'nord t))
+
 ;; toggles
 ;; =======
 (tool-bar-mode -1)
