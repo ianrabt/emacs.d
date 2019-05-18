@@ -10,3 +10,13 @@
   (writing-defaults)
   (set-fill-column 70)
   (auto-fill-mode))
+
+(defun open-journal ()
+  (interactive)
+  (find-file "~/itaylor@g.hmc.edu/Personal/personal.org")
+  (journal-mode))
+
+(defun journal-insert-entry ()
+  (interactive)
+  (org-insert-heading-after-current)
+  (org-time-stamp-inactive))
