@@ -2,6 +2,16 @@
 ;;   this file is a bit of a grab-bag
 ;; =====================================
 
+;; backup settings
+;; ===============
+
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
+
+
 ;; evil
 ;; ====
 
