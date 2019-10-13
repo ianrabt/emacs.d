@@ -10,6 +10,9 @@
 
 (add-hook 'prog-mode-hook 'show-paren-mode) ;; match parens
 
+;; (use-package company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; version control
 ;; ===============
 (use-package magit
@@ -24,6 +27,7 @@
 
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package company-lsp :commands company-lsp)
+
 ;; TODO set up flymake
 ;; TODO set up company
 
@@ -32,6 +36,16 @@
 
 ;; rust
 ;; ====
+;; TODO
+
+;; c
+;; =
+(setq c-default-style "linux")
+(add-hook 'c-mode-hook #'lsp)
+
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 ;; emacs lisp
 ;; ==========

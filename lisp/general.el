@@ -72,6 +72,15 @@
 (setq prettify-symbols-unprettify-at-point 1)
 (global-prettify-symbols-mode 1)
 
+;; match parenthesis
+;; (electric-pair-mode 1)
+(use-package smartparens
+  :ensure t
+  :config
+  (setq sp-show-pair-from-inside nil)
+  (require 'smartparens-config)
+  :diminish smartparens-mode)
+
 ;; allow "un-filling" paragraphs (i.e. undo `fill-paragraph'
 (defun unfill-paragraph ()
   "Undo the effects of `fill-paragraph'."
