@@ -13,8 +13,12 @@
 
 (defun open-journal ()
   (interactive)
-  (find-file "~/itaylor@g.hmc.edu/Personal/personal.org")
-  (journal-mode))
+  (let* ((location "~/Insync/itaylor@g.hmc.edu/Google Drive/Personal/personal.org")
+	 (already-opened (find-buffer-visiting location)))
+    (find-file location)
+    (unless already-opened (journal-mode))))
+
+(global-set-key (kbd "C-c j") 'open-journal)
 
 (defun journal-insert-entry ()
   (interactive)
