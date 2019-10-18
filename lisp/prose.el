@@ -64,7 +64,7 @@
 (add-hook 'TeX-mode-hook (lambda ()
 			   (set-fill-column 80)
 			   (auto-fill-mode)
-			   (smartparens-mode))
+			   (smartparens-mode)))
 
 ;; PDFs
 ;; ====
