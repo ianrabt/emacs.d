@@ -11,14 +11,16 @@
   (set-fill-column 70)
   (auto-fill-mode))
 
-(defun open-journal ()
-  (interactive)
-  (let* ((location "~/Insync/itaylor@g.hmc.edu/Google Drive/Personal/personal.org")
-	 (already-opened (find-buffer-visiting location)))
-    (find-file location)
+(defun open-book (filename)
+  "Open a given org notebook/journal file"
+  (let ((already-opened (find-buffer-visiting filename)))
+    (find-file filename)
     (unless already-opened (journal-mode))))
 
-(global-set-key (kbd "C-c j") 'open-journal)
+(defun open-notebook ()
+  (interactive)
+  (let* ((location "~/Insync/itaylor@g.hmc.edu/Google Drive/Personal/personal.org"))
+	 (open-book location)))
 
 (defun journal-insert-entry ()
   (interactive)
@@ -48,11 +50,20 @@ It is passed as an argument to `parse-time-string' and
   (interactive)
   ;; TODO use optional arguments!
   (let ((filename (format-time-string journal-file-format-string)))
-    (find-file (concat journal-file-directory filename)))
-  (journal-mode))
+    (open-book (concat journal-file-directory filename))))
 
 (defun journal-new-entry ()
   "TODO"
   (interactive)
   (journal-find-file)
   (journal-insert-entry))
+
+;; keybindings
+;; ===========
+
+(define-prefix-command 'journal-map)
+(define-key journal-map (kbd "j") 'open-notebook)
+(define-key journal-map (kbd "k") 'journal-find-file)
+(define-key journal-map (kbd "RET") 'journal-new-entry)
+
+(global-set-key (kbd "C-c j") 'journal-map)
