@@ -89,3 +89,14 @@
     (fill-paragraph nil)))
 
 (global-set-key (kbd "M-Q") 'unfill-paragraph)
+
+
+;; open emacs init files
+;; =====================
+
+(defun open-init ()
+  "Open the emacs configuration file"
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "C-c i") 'open-init)
