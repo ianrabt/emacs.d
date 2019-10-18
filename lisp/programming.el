@@ -9,6 +9,7 @@
 (which-function-mode 1) ;; display information about function at point
 
 (add-hook 'prog-mode-hook 'show-paren-mode) ;; match parens
+(add-hook 'prog-mode-hook 'smartparens-mode);; smart parents
 
 ;; (use-package company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
