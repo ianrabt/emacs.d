@@ -1,0 +1,5 @@
+* Overall things I want to try to add [0/3]
+** TODO fix use-package and consider other package managers
+** TODO remove custom
+** TODO figure out emacs-server and emacsclient
+   and get them set up with gnome
