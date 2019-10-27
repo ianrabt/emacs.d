@@ -26,6 +26,8 @@
   (interactive)
   (end-of-buffer)
   (org-insert-heading-respect-content)
+  ;; two universal prefix commands make `org-time-stamp-inactive' insert a time
+  ;; stamp at the current time *without prompting the user.*
   (let ((current-prefix-arg '(16)))
     (call-interactively 'org-time-stamp-inactive))
   (newline-and-indent)
@@ -67,3 +69,4 @@ It is passed as an argument to `parse-time-string' and
 (define-key journal-map (kbd "RET") 'journal-new-entry)
 
 (global-set-key (kbd "C-c j") 'journal-map)
+
