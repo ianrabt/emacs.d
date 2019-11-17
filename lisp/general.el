@@ -58,8 +58,9 @@
 
 ;; replace `list-buffers` with the more advanced `ibuffer`
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
-(global-set-key (kbd "C-c f") 'follow-delete-other-windows-and-split)
+(global-set-key (kbd "C-x C-c") 'save-buffers-kill-emacs)
+(global-set-key (kbd "C-c s") 'follow-delete-other-windows-and-split)
+(global-set-key (kbd "C-c f") 'set-fill-column)
 
 (use-package which-key
   :config
