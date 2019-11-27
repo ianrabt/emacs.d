@@ -69,4 +69,3 @@ It is passed as an argument to `parse-time-string' and
 (define-key journal-map (kbd "RET") 'journal-new-entry)
 
 (global-set-key (kbd "C-c j") 'journal-map)
-
