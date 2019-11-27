@@ -17,8 +17,13 @@
 
 ;; start up evil automatically
 (use-package evil
+  :init
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; Try using emacs defaults in insert mode.  I'm going to see if I
+  ;; like this more...
+  (setq evil-insert-state-map (make-sparse-keymap))
+  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state))
 
 ;; Make movement keys work like they should
 (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>")
