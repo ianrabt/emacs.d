@@ -26,7 +26,6 @@
 ;; markdown configuration
 ;; ======================
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -58,8 +57,7 @@
   :defer t
   :init
   (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  :ensure t)
+  (setq TeX-parse-self t))
 
 (add-hook 'TeX-mode-hook (lambda ()
 			   (set-fill-column 80)
@@ -70,5 +68,4 @@
 ;; ====
 
 (use-package pdf-tools
-  :ensure t
   :config (pdf-tools-install))

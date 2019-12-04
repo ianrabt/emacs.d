@@ -45,7 +45,6 @@
 
 ;; evil surround
 (use-package evil-surround
-  :ensure t
   :config
   (global-evil-surround-mode 1))
 
@@ -81,7 +80,6 @@
 ;; match parenthesis
 ;; (electric-pair-mode 1)
 (use-package smartparens
-  :ensure t
   :config
   (setq sp-show-pair-from-inside nil)
   (require 'smartparens-config)

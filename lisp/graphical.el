@@ -3,9 +3,10 @@
 
 ;; color theme
 ;; ===========
+
+(straight-use-package 'nord-theme)
 (setq nord-comment-brightness 20)
 (setq nord-region-highlight "frost")
-(load-theme 'nord t)
 
 (defun load-nord-theme (frame)
   (select-frame frame)
