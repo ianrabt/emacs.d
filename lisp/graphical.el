@@ -8,22 +8,26 @@
 (setq nord-comment-brightness 20)
 (setq nord-region-highlight "frost")
 
-(defun load-nord-theme (frame)
-  (select-frame frame)
-  (load-theme 'nord t))
+(defvar toggle-themes '(nord adwaita)
+  "The two themes to be toggled between.  Assumes the first theme
+is dark and the second is light")
 
-(if (daemonp)
-	(add-hook 'after-make-frame-functions #'load-nord-theme)
-  (load-theme 'nord t))
+;; this should only be run during start-up -- and will attempt to set the
+;; correct theme based on the current gtk-theme.  This works well for me so
+;; far, because I toggle between "Adwaita" and "Adwaita-dark"
+(let ((gtk-theme (shell-command-to-string
+		  "gsettings get org.gnome.desktop.interface gtk-theme")))
+  (if (string-match-p (regexp-quote "dark") gtk-theme)
+      (load-theme (car toggle-themes))
+    (load-theme (nth 1 toggle-themes))))
 
 (defun toggle-theme ()
   "Switch between my dark and light theme.  This function is
 fairly brittle (assumes there is a theme already set, etc), but
 it works well enough for my purposes."
   (interactive)
-  (let* ((themes '(nord adwaita))
-	 (current-theme (car custom-enabled-themes))
-	 (next-theme (car (remove current-theme themes))))
+  (let* ((current-theme (car custom-enabled-themes))
+	 (next-theme (car (remove current-theme toggle-themes))))
     (disable-theme current-theme)
     (load-theme next-theme t)))
 
