@@ -22,7 +22,12 @@
 
 ;; get that custom out of my face!
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-     (load custom-file)
+
+;; creates custom file if it does not exist
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file t))
+
+(load custom-file)
 
 (add-to-list 'load-path
 	     (expand-file-name "lisp" user-emacs-directory))
