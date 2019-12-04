@@ -20,22 +20,21 @@
   :init
   :config
   (evil-mode 1)
-  ;; Try using emacs defaults in insert mode.  I'm going to see if I
-  ;; like this more...
+  ;; use only emacs keybindings in insert mode
   (setq evil-insert-state-map (make-sparse-keymap))
-  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state))
+  (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 
-;; Make movement keys work like they should
-(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>")
-  'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>")
-  'evil-previous-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>")
-  'evil-next-visual-line)
-(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>")
-  'evil-previous-visual-line)
+  ;; Make movement keys work visually, over wrapped lines
+  (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>")
+    'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>")
+    'evil-previous-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>")
+    'evil-next-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>")
+    'evil-previous-visual-line))
 
-;; Make horizontal movement cross lines                                    
+;; Make horizontal movement cross lines
 (setq-default evil-cross-lines t)
 
 ;; evil escape
@@ -73,12 +72,11 @@
 ;; use swiper
 (global-set-key (kbd "C-s") 'swiper)
 
-;; simplify lambda, etc in all supported modes
+;; simplify lambda, etc in all supported modes -- great for LaTeX
 (setq prettify-symbols-unprettify-at-point 1)
 (global-prettify-symbols-mode 1)
 
 ;; match parenthesis
-;; (electric-pair-mode 1)
 (use-package smartparens
   :config
   (setq sp-show-pair-from-inside nil)
