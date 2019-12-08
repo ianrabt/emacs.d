@@ -3,6 +3,8 @@
 (setq adaptive-wrap-extra-indent 0)
 (set-face-attribute 'variable-pitch nil :family "DejaVu Serif Condensed")
 
+(straight-use-package 'olivetti)
+
 (defun writing-defaults ()
   ;; some good defaults for writing
   (interactive)
