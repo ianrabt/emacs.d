@@ -96,9 +96,14 @@
 ;; open emacs init files
 ;; =====================
 
-(defun open-init ()
-  "Open the emacs configuration file"
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
+(defun open-init (arg)
+  "Open the emacs configuration file.  Use \\[universal-argument]
+to show a projectile listing of the entire emacs directory."
+  (interactive "P")
+  (let ((init-file (expand-file-name "init.el"
+				     user-emacs-directory)))
+    (if arg (progn (dired user-emacs-directory)
+		   (project-find-file))
+      (find-file init-file))))
 
 (global-set-key (kbd "C-c i") 'open-init)
