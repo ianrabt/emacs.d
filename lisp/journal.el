@@ -25,7 +25,7 @@
 (defun journal-insert-entry ()
   (interactive)
   (end-of-buffer)
-  (org-insert-heading-respect-content)
+  (org-insert-heading nil nil t)
   ;; two universal prefix commands make `org-time-stamp-inactive' insert a time
   ;; stamp at the current time *without prompting the user.*
   (let ((current-prefix-arg '(16)))
