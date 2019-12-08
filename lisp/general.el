@@ -22,6 +22,7 @@
   (evil-mode 1)
   ;; use only emacs keybindings in insert mode
   (setq evil-insert-state-map (make-sparse-keymap))
+  (setq evil-want-fine-undo t)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 
   ;; Make movement keys work visually, over wrapped lines
