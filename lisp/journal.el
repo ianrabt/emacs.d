@@ -60,6 +60,11 @@ It is passed as an argument to `parse-time-string' and
   (journal-find-file)
   (journal-insert-entry))
 
+(defun journal-dired ()
+  "Open journal directory."
+  (interactive)
+  (dired journal-file-directory))
+
 ;; keybindings
 ;; ===========
 
@@ -67,5 +72,6 @@ It is passed as an argument to `parse-time-string' and
 (define-key journal-map (kbd "j") 'open-notebook)
 (define-key journal-map (kbd "k") 'journal-find-file)
 (define-key journal-map (kbd "RET") 'journal-new-entry)
+(define-key journal-map (kbd ".") 'journal-dired)
 
 (global-set-key (kbd "C-c j") 'journal-map)
