@@ -89,3 +89,12 @@
 					evil-surround-pairs-alist)))
 
 (use-package rust-mode)
+
+(straight-use-package 'haskell-mode)
+
+;; R (and R Markdown, etc)
+;; =======================
+
+(use-package ess)
+(use-package poly-markdown
+  :ensure t)
