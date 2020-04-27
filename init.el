@@ -37,3 +37,4 @@
 (load "programming")
 (load "prose")
 (load "journal")
+(load "util")
