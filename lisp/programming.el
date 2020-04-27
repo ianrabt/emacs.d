@@ -34,13 +34,34 @@
 
 (use-package evil-magit)
 
-(use-package lsp-mode
-  :commands lsp)
-  ;; :init
-  ;; (setq ...))
+(use-package forge)
 
-(use-package lsp-ui :commands lsp-ui-mode)
+;; lsp
+;; ===
+(use-package yasnippet)
+
+(use-package lsp-mode
+  ;; :hook (python-mode . lsp-deferred)
+  :commands (lsp lsp-deferred))
+
+(use-package lsp-python-ms
+  :hook (python-mode . (lambda ()
+			 (lsp-deferred))))
+
+(use-package lsp-ui
+  :hook lsp
+  :init
+  (setq
+   lsp-ui-doc-enable nil
+   lsp-ui-peek-enable nil
+   lsp-ui-sideline-enable nil)
+  :commands lsp-ui-mode)
+
 (use-package company-lsp :commands company-lsp)
+
+(use-package dap-mode)
+
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; TODO set up flymake
 ;; TODO set up company
