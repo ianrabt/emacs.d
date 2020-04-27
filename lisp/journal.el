@@ -36,7 +36,7 @@
 (defvar journal-file-directory
   "~/Insync/itaylor@g.hmc.edu/Google Drive/Personal/journal/")
 
-(defvar journal-file-format-string "%Y %b.org.gpg"
+(defvar journal-file-format-string "%Y-%m %b.org.gpg"
   "The time format string, used to create and find the
 appropriate journal file in the journal directory.
 
