@@ -108,3 +108,9 @@ to show a projectile listing of the entire emacs directory."
       (find-file init-file))))
 
 (global-set-key (kbd "C-c i") 'open-init)
+
+;; scroll settings
+;; ===============
+(setq mouse-wheel-scroll-amount '(0.07))
+(setq mouse-wheel-progressive-speed nil)
+(setq ring-bell-function 'ignore)
