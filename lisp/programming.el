@@ -11,8 +11,21 @@
 (add-hook 'prog-mode-hook 'show-paren-mode) ;; match parens
 (add-hook 'prog-mode-hook 'smartparens-mode);; smart parents
 
-;; (use-package company-mode)
-(add-hook 'after-init-hook 'global-company-mode)
+;; launch terminal
+(defvar default-terminal "gnome-terminal" "default terminal command")
+(global-set-key (kbd "C-c v")
+		(lambda ()
+		  (interactive)
+		  (start-process default-terminal nil default-terminal)))
+
+;(use-package vterm)
+
+;(use-package vterm-toggle
+;  :bind ("C-c t" . 'vterm-toggle-cd)
+;  :config (define-key vterm-mode-map [(control return)]   #'vterm-toggle-insert-cd))
+
+(use-package company
+  :hook (after-init . global-company-mode))
 
 ;; version control
 ;; ===============
