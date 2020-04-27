@@ -1,6 +1,12 @@
 ;; general writing configuration
 ;; =============================
-(setq adaptive-wrap-extra-indent 0)
+(use-package adaptive-wrap
+  :config (setq adaptive-wrap-extra-indent 0))
+
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'visual-line-mode)
+(add-hook 'text-mode-hook 'adaptive-wrap-prefix-mode)
+
 (set-face-attribute 'variable-pitch nil :family "DejaVu Serif Condensed")
 
 (straight-use-package 'olivetti)
