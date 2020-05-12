@@ -1,10 +1,9 @@
 ;; general programming configurations
 ;; ==================================
 (use-package projectile
-  :config (projectile-mode 1))
-
-;; list all files in project (TODO as defined by projectile?)
-(global-set-key (kbd "C-c p") 'project-find-file)
+  :config
+  (projectile-mode 1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 (which-function-mode 1) ;; display information about function at point
 
