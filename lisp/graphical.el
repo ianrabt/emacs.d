@@ -4,11 +4,12 @@
 ;; color theme
 ;; ===========
 
+(straight-use-package 'doom-themes)
 (straight-use-package 'nord-theme)
 (setq nord-comment-brightness 20)
 (setq nord-region-highlight "frost")
 
-(defvar toggle-themes '(nord adwaita)
+(defvar toggle-themes '(nord doom-nord-light)
   "The two themes to be toggled between.  Assumes the first theme
 is dark and the second is light")
 
