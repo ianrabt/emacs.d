@@ -18,11 +18,14 @@
 ;; start up evil automatically
 (use-package evil
   :init
-  :config
-  (evil-mode 1)
   ;; use only emacs keybindings in insert mode
   (setq evil-insert-state-map (make-sparse-keymap))
   (setq evil-want-fine-undo t)
+  ;; specified by `evil-collection'
+  (setq evil-want-keybinding nil)
+
+  :config
+  (evil-mode 1)
   (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 
   ;; Make movement keys work visually, over wrapped lines
@@ -45,8 +48,15 @@
 
 ;; evil surround
 (use-package evil-surround
+  :ensure t
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 ;; misc.
 ;; =====
@@ -92,6 +102,18 @@
     (fill-paragraph nil)))
 
 (global-set-key (kbd "M-Q") 'unfill-paragraph)
+
+;; better help
+(use-package helpful
+  :init
+  (setq counsel-describe-function-function #'helpful-callable)
+  (setq counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ("C-h f" . 'helpful-callable)
+  ("C-h v" . 'helpful-variable)
+  ("C-h k" . 'helpful-key)
+  ("C-c C-d" . 'helpful-at-point)
+  ("C-h F" . 'helpful-function))
 
 
 ;; open emacs init files
